@@ -49,6 +49,10 @@ function handleBreedsListBtnClick() {
     fetchDoggies();
 }
 
+function handleSearch() {
+    
+}
+
 function init() {
     fetchDoggies();
 }
