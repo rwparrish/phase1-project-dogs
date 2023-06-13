@@ -1,6 +1,6 @@
 let dogsArr
-
 const breedsListContainer = document.getElementById('breeds-list')
+
 
 function fetchDoggies() {
     fetch('https://dog.ceo/api/breeds/list/all')
@@ -17,13 +17,17 @@ function renderDogBreeds(dogsArr) {
     dogsHeading.textContent = 'Dog Breeds'
     const breedsUl = document.createElement("ul")
     breedsListContainer.append(dogsHeading, breedsUl)
+
     dogsArr.forEach(dog => {
         const breedLi = document.createElement("li");
         const breedSpan = document.createElement("span");
         breedSpan.textContent = dog;
         breedLi.appendChild(breedSpan);
         breedsUl.append(breedLi);
+
         breedSpan.addEventListener('click', handleBreedClick);
+        breedSpan.addEventListener('mouseenter', handleBreedMouseEnter);
+        breedSpan.addEventListener('mouseleave', handleBreedMouseLeave);
     });
 }
 
@@ -61,9 +65,21 @@ function handleBreedsListBtnClick() {
 }
 
 function handleSearchFormInput(e) {
-   let userInput = e.target.value
-   let filteredBreeds = dogsArr.filter(breed => breed.toLowerCase().includes(userInput.toLowerCase()));
+    let userInput = e.target.value
+    let filteredBreeds = dogsArr.filter(breed => breed.toLowerCase().includes(userInput.toLowerCase()));
     renderDogBreeds(filteredBreeds);
+}
+
+function handleBreedMouseEnter(e) {
+    e.target.style.fontWeight = 'bold'
+    // prefer to use mouseout event instead
+    // setTimeout(() => {
+    //     e.target.style.fontWeight = '';
+    //   }, "500");
+}
+
+function handleBreedMouseLeave(e) {
+    e.target.style.fontWeight = ''
 }
 
 function init() {
