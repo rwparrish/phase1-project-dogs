@@ -1,10 +1,12 @@
+let dogsArr
+
 const breedsListContainer = document.getElementById('breeds-list')
 
 function fetchDoggies() {
     fetch('https://dog.ceo/api/breeds/list/all')
     .then(resp => resp.json())
     .then(data => {
-        let dogsArr = Object.keys(data.message)
+        dogsArr = Object.keys(data.message)
         renderDogBreeds(dogsArr)
     })
 }
@@ -12,14 +14,16 @@ function fetchDoggies() {
 function renderDogBreeds(dogsArr) {
     breedsListContainer.innerHTML = ''
     const dogsHeading = document.createElement('h3')
-    dogsHeading.innerText = 'Dog Breeds'
+    dogsHeading.textContent = 'Dog Breeds'
     const breedsUl = document.createElement("ul")
     breedsListContainer.append(dogsHeading, breedsUl)
     dogsArr.forEach(dog => {
-        const breedLi = document.createElement("li")
-        breedLi.innerText = dog
-        breedsUl.append(breedLi)
-        breedLi.addEventListener('click', handleBreedClick)
+        const breedLi = document.createElement("li");
+        const breedSpan = document.createElement("span");
+        breedSpan.textContent = dog;
+        breedLi.appendChild(breedSpan);
+        breedsUl.append(breedLi);
+        breedSpan.addEventListener('click', handleBreedClick);
     });
 }
 
@@ -32,7 +36,7 @@ function fetchRandomDogImageByBreed(breed) {
 
 function renderRandomDogImage(randomDogImageUrl) {
     breedsListBtn = document.createElement('button');
-    breedsListBtn.innerText = 'Return to List';
+    breedsListBtn.textContent = 'Return to List';
     breedsListBtn.addEventListener('click', handleBreedsListBtnClick);
     breedsListContainer.innerHTML = ''
     dogImg = document.createElement('img')
@@ -40,8 +44,16 @@ function renderRandomDogImage(randomDogImageUrl) {
     breedsListContainer.append(breedsListBtn, dogImg)
 }
 
+function searchForm() {
+    const inputSearch = document.getElementById('search-input')
+    console.log(inputSearch)
+    inputSearch.addEventListener('input', handleSearchFormInput);
+}
+
+// Event listeners
+
 function handleBreedClick(e) {
-    const breed = e.target.innerText;
+    const breed = e.target.textContent;
     fetchRandomDogImageByBreed(breed);
 }
 
@@ -49,12 +61,15 @@ function handleBreedsListBtnClick() {
     fetchDoggies();
 }
 
-function handleSearch() {
-    
+function handleSearchFormInput(e) {
+   let userInput = e.target.value
+   let filteredBreeds = dogsArr.filter(breed => breed.includes(userInput));
+    renderDogBreeds(filteredBreeds);
 }
 
 function init() {
     fetchDoggies();
+    searchForm();
 }
 
 init()
