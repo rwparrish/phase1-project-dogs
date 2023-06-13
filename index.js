@@ -46,7 +46,6 @@ function renderRandomDogImage(randomDogImageUrl) {
 
 function searchForm() {
     const inputSearch = document.getElementById('search-input')
-    console.log(inputSearch)
     inputSearch.addEventListener('input', handleSearchFormInput);
 }
 
