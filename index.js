@@ -63,7 +63,7 @@ function handleBreedsListBtnClick() {
 
 function handleSearchFormInput(e) {
    let userInput = e.target.value
-   let filteredBreeds = dogsArr.filter(breed => breed.includes(userInput));
+   let filteredBreeds = dogsArr.filter(breed => breed.toLowerCase().includes(userInput.toLowerCase()));
     renderDogBreeds(filteredBreeds);
 }
 
