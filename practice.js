@@ -1,8 +1,7 @@
 const breedsListDiv = document.getElementById('breeds-list')
 let dogsArr
-// append a ul to this breedsList
-// interate and append li's to the ul - create an li forEach breed
 
+// fetch data and process it into an array then pass it renderDoggies
 function fetchDoggies() {
     fetch('https://dog.ceo/api/breeds/list/all')
     .then(resp => resp.json())
@@ -21,7 +20,5 @@ function renderDoggies(dogsArr) {
         dogsUl.append(dogLi)
     })
 }
-
-
 
 fetchDoggies()
