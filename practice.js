@@ -1,7 +1,7 @@
 const breedsListDiv = document.getElementById('breeds-list')
 let dogsArr
 
-// fetch data and process it into an array then pass it renderDoggies
+// fetch data and process it into an array then pass it to renderDoggies
 function fetchDoggies() {
     fetch('https://dog.ceo/api/breeds/list/all')
     .then(resp => resp.json())
