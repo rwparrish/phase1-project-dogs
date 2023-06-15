@@ -1,8 +1,11 @@
 # Dog Breeds Project
 
-This project is a simple web application that allows users to explore different dog breeds. It fetches data from the Dog API (https://dog.ceo/api) to retrieve a list of dog breeds and display them on the webpage. Users can click on a breed to view a random image of a dog from that breed.
+This project is a simple web application that allows users to explore different dog breeds. It fetches data from the Dog API (https://dog.ceo/api) to retrieve a list of dog breeds and display them on the webpage. Users can click on a breed to view a random image of a dog from that breed. This is a demo project meant for educational purposes.
 
 ## Features
+
+You must modify the src attribute of the script tag on line 16 in index.html to see the finsihed project working in the browser:
+    ```<script src="practice.js"></script> --> <script src="index.js"></script>```
 
 - Fetches dog breed data from the Dog API.
 - Renders the list of dog breeds on the webpage.
@@ -30,16 +33,6 @@ To run this project locally, follow these steps:
 - You can search for a specific breed by typing in the search input field. The list will dynamically update to show only the matching breeds.
 - Clicking on a breed will display a random image of a dog from that breed.
 - To return to the list of dog breeds, click the "Return to List" button.
-
-## Contributing
-
-This project is open to contributions. If you would like to contribute, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make the necessary changes and commit your code.
-4. Push your changes to your forked repository.
-5. Submit a pull request detailing your changes.
 
 ## Credits
 
